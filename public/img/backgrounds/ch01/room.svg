@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <!-- PLACEHOLDER: replace with the real background (1280x720, .webp recommended) -->
+  <rect width="1280" height="720" fill="#1d2230"/>
+  <rect y="560" width="1280" height="160" fill="#151925"/>
+  <rect x="180" y="420" width="320" height="160" fill="#4a3b2a"/>
+  <rect x="860" y="160" width="220" height="420" fill="#3a2f26"/>
+  <circle cx="1050" cy="380" r="10" fill="#c9a24a"/>
+  <text x="640" y="80" fill="#6b7590" font-family="sans-serif" font-size="32" text-anchor="middle">ch01_room (placeholder)</text>
+</svg>

@@ -1,0 +1,6 @@
+items:
+  ch01_rusty_key:
+    name: Rusty key
+    description: An old key found in the desk drawer.
+    icon: img/items/ch01/rusty_key.svg
+    category: key_items

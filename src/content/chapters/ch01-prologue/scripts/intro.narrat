@@ -1,0 +1,7 @@
+// Chapter 1 entry point (called from global/scripts/main.narrat).
+ch01_start:
+  set_screen ch01_room
+  "Darkness. Then, slowly, a room takes shape."
+  talk izumo idle "Where... am I?"
+  start_quest ch01_escape
+  jump ch01_room_enter

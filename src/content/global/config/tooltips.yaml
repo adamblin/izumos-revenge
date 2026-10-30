@@ -1,0 +1,8 @@
+options:
+  delay: 0
+  width: 350
+  keywordsPrefix: "@t{"
+  keywordsSuffix: "}@"
+  useNewSystem: true
+# Write @t{keyword}@ in a dialogue line to show a tooltip. See docs/GUIA_CONTENIDO.md.
+tooltips: []

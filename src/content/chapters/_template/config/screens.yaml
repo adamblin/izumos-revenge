@@ -1,0 +1,5 @@
+screens:
+  chXX_place:
+    background: img/backgrounds/chXX/place.webp
+    buttons:
+      - chXX_place_thing

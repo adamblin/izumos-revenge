@@ -1,0 +1,15 @@
+# Hotspots. Coordinates are in background pixels (1280x720).
+# action = narrat label run when the player clicks the hotspot.
+buttons:
+  ch01_room_desk:
+    enabled: true
+    text: Desk
+    cssClass: hotspot
+    position: { left: 180, top: 420, width: 320, height: 160 }
+    action: ch01_hotspot_desk
+  ch01_room_door:
+    enabled: true
+    text: Door
+    cssClass: hotspot
+    position: { left: 860, top: 160, width: 220, height: 420 }
+    action: ch01_hotspot_door

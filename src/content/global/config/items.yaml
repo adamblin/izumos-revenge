@@ -1,0 +1,4 @@
+# Item categories shared by the whole game. Items themselves live in each chapter.
+categories:
+  - id: key_items
+    title: Key items

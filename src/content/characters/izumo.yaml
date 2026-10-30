@@ -1,0 +1,8 @@
+# One file per character keeps the cast easy to review.
+characters:
+  izumo:
+    name: Izumo
+    style:
+      color: "#e05a5a"
+    sprites:
+      idle: izumo/idle.svg

@@ -1,0 +1,7 @@
+// Chapter XX entry point. Jump here from the previous chapter with "jump chXX_start".
+chXX_start:
+  set_screen chXX_place
+  "Write the first line of the chapter here."
+
+chXX_hotspot_thing:
+  "Description of the thing the player clicked."

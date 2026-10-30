@@ -1,0 +1,7 @@
+# A screen = one background + the hotspots (buttons) that can be clicked on it.
+screens:
+  ch01_room:
+    background: img/backgrounds/ch01/room.svg
+    buttons:
+      - ch01_room_desk
+      - ch01_room_door

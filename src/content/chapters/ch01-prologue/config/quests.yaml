@@ -1,0 +1,8 @@
+quests:
+  ch01_escape:
+    title: Escape the room
+    description: Izumo wakes up locked in an unknown room.
+    category: main
+    objectives:
+      find_key:
+        description: Find a way to open the door.

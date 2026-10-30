@@ -1,0 +1,4 @@
+// Entry point of the game. Narrat always starts at the "main" label.
+// Keep this file tiny: it only decides which chapter comes first.
+main:
+  jump ch01_start

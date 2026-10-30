@@ -1,0 +1,34 @@
+// Free exploration of the room. Every hotspot label ends without a jump,
+// which hands control back to the player so they can click something else.
+
+ch01_room_enter:
+  if (visited? ch01_room):
+    talk izumo idle "Back in this room again."
+  else:
+    talk izumo idle "I should look around. Maybe there's a way out."
+  mark_visited ch01_room
+
+ch01_hotspot_desk:
+  if (has_item? ch01_rusty_key 1):
+    talk izumo idle "The drawer is empty now."
+  else:
+    "Inside the drawer there is a rusty key."
+    add_item ch01_rusty_key 1
+    complete_objective ch01_escape find_key
+
+ch01_hotspot_door:
+  if (has_item? ch01_rusty_key 1):
+    choice:
+      talk izumo idle "The key might fit. Should I leave now?"
+      "Open the door":
+        jump ch01_end
+      "Not yet":
+        talk izumo idle "Better check everything first."
+  else:
+    talk izumo idle "Locked. There must be a key somewhere."
+
+ch01_end:
+  talk izumo idle "It opens!"
+  complete_quest ch01_escape
+  set_screen default
+  "End of the prologue."

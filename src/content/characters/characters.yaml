@@ -1,0 +1,13 @@
+---
+# Base path for every sprite below (relative to /public).
+config:
+  imagesPath: img/characters/
+characters:
+  # "game" speaks plain lines ("Some text") -> the narrator.
+  game:
+    name: ""
+    color: white
+  player:
+    style:
+      color: orange
+    name: You

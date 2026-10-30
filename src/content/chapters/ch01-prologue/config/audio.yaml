@@ -1,0 +1,6 @@
+# Music and sound effects for this chapter. Files go in /public/audio/...
+# Example (uncomment once the file exists):
+#   ch01_theme:
+#     loop: true
+#     src: audio/music/ch01_theme.mp3
+files: {}

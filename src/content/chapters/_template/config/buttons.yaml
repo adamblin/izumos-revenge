@@ -1,0 +1,8 @@
+# Coordinates in background pixels (1280x720).
+buttons:
+  chXX_place_thing:
+    enabled: true
+    text: Thing
+    cssClass: hotspot
+    position: { left: 100, top: 100, width: 200, height: 200 }
+    action: chXX_hotspot_thing

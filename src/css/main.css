@@ -12,3 +12,22 @@
 }
 
 /* Add any other CSS you want here */
+
+/* Hotspots: clickable areas of a scene (buttons with cssClass: hotspot) */
+#narrat .hotspot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: 2px dashed transparent;
+  border-radius: 8px;
+  color: transparent;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+#narrat .hotspot:hover {
+  border-color: var(--primary);
+  color: var(--text-color);
+}

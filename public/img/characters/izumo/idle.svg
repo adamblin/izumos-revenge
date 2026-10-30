@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <!-- PLACEHOLDER: replace with Izumo's portrait (square PNG/WebP) -->
+  <rect width="256" height="256" rx="24" fill="#2a2f3f"/>
+  <circle cx="128" cy="100" r="52" fill="#e05a5a"/>
+  <rect x="58" y="164" width="140" height="70" rx="35" fill="#e05a5a"/>
+</svg>

@@ -1,55 +1,28 @@
-# Narrat Template
+# Izumo's Revenge
 
-Template app for [Narrat](https://github.com/nialna/narrat).
+Aventura gráfica point & click construida con [Narrat](https://docs.narrat.dev) (Vue + Vite), empaquetable como web o como app de escritorio con Electron.
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+## Empezar
 
-## Usage
+```bash
+pnpm install
+pnpm start            # desarrollo con recarga automática
+pnpm run type-check   # comprobación de tipos (obligatoria antes de subir)
+pnpm run build        # build web en dist/
+pnpm run desktop      # build + Electron
+```
 
-You can clone, fork or download this to get it in a local folder, then:
+## Añadir contenido
 
-1. `npm install`
-2. `npm start`
+📖 **[docs/GUIA_CONTENIDO.md](docs/GUIA_CONTENIDO.md)**: diálogos, escenas y hotspots, personajes, objetos, misiones, música y cómo crear capítulos.
 
-## Building for the web
+## Estructura
 
-`npm run build`
+| Carpeta | Contenido | Quién la toca |
+|---|---|---|
+| `src/content/` | Capítulos, personajes y configuración (`.narrat` + `.yaml`) | Equipo narrativo |
+| `public/` | Imágenes, audio y fuentes | Arte y sonido |
+| `src/game/` | Mecánicas propias (comandos `.narrat` personalizados, plugins) | Programación |
+| `src/core/` | Ensamblado del contenido y arranque del motor | Programación |
 
-Builds the app for production to the `build/` folder.
-It correctly bundles Vue in production mode and optimizes the build for the best performance.
-
-It should be easy to host the built result as a static website on a service like [Netlify](https://www.netlify.com)
-
-## Building as an app
-
-This template has [electron](https://www.electronjs.org) already setup to create a built app of your game.
-
-To run it:
-
-`npm run electron`
-
-To build it (it will come out in the `out` folder):
-
-`npm run package`
-
-This should work on Windows, Mac and Linux
-
-## Narrat documentation
-
-[See docs](https://docs.narrat.dev)
-
-## Changing game code
-
-You can edit game code and config in the data folder (`data/example.narrat`).
-
-[See docs](https://docs.narrat.dev) for more usage info
-
-## Available Scripts
-
-### npm start
-
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+La arquitectura y los principios de diseño están explicados en la [sección 13 de la guía](docs/GUIA_CONTENIDO.md#13-para-programadores).

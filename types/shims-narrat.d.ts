@@ -7,12 +7,12 @@ declare module "*.narrat" {
 }
 
 declare module "*.yaml" {
-  import { NarratYaml } from "narrat";
+  import type { NarratYaml } from "narrat/dist/types/app-types";
   const narratYaml: NarratYaml;
   export default narratYaml;
 }
 declare module "*.yml" {
-  import { NarratYaml } from "narrat";
+  import type { NarratYaml } from "narrat/dist/types/app-types";
   const narratYaml: NarratYaml;
   export default narratYaml;
 }

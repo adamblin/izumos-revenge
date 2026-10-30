@@ -1,0 +1,4 @@
+# Quest categories shared by the whole game. Quests themselves live in each chapter.
+categories:
+  - id: main
+    title: Main story

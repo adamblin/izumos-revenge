@@ -1,0 +1,4 @@
+# Screens shared by the whole game. Chapter screens live in each chapter.
+screens:
+  default:
+    background: img/backgrounds/curtain.webp
