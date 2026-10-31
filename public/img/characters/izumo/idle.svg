@@ -1,6 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
-  <!-- PLACEHOLDER: replace with Izumo's portrait (square PNG/WebP) -->
-  <rect width="256" height="256" rx="24" fill="#2a2f3f"/>
-  <circle cx="128" cy="100" r="52" fill="#e05a5a"/>
-  <rect x="58" y="164" width="140" height="70" rx="35" fill="#e05a5a"/>
+  <!-- PLACEHOLDER portrait of Izumo in ukiyo-e (bijin-ga) style. Replace with the final art (square). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f6f99"/>
+      <stop offset="0.55" stop-color="#efe4cc"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" fill="url(#bg)"/>
+  <g stroke="#221c18" stroke-width="3" stroke-linejoin="round">
+    <!-- kimono: indigo outer, vermilion under-collar -->
+    <path d="M30 256 C40 205 80 185 128 182 C176 185 216 205 226 256 Z" fill="#23436c"/>
+    <path d="M100 186 L128 236 L156 186" fill="#b8382a"/>
+    <path d="M108 186 L128 222 L148 186" fill="#efe4cc" stroke-width="2"/>
+    <g fill="#efe4cc" stroke="none">
+      <circle cx="62" cy="232" r="5"/><circle cx="80" cy="212" r="4"/><circle cx="190" cy="226" r="5"/><circle cx="176" cy="206" r="4"/>
+    </g>
+    <!-- neck and face -->
+    <path d="M114 150 V188 H142 V150" fill="#f7eee0"/>
+    <path d="M90 108 C90 72 166 72 166 108 C166 140 150 164 128 164 C106 164 90 140 90 108 Z" fill="#f7eee0"/>
+    <!-- hair: shimada-style bun -->
+    <path d="M84 116 C76 66 100 44 128 44 C156 44 180 66 172 116 C168 92 150 80 128 82 C106 80 88 92 84 116 Z" fill="#221c18"/>
+    <ellipse cx="128" cy="34" rx="34" ry="20" fill="#221c18"/>
+    <!-- kanzashi pin and comb -->
+    <path d="M150 30 L196 14" stroke-width="4"/>
+    <circle cx="198" cy="13" r="7" fill="#b8382a"/>
+    <path d="M104 52 H152 V60 H104 Z" fill="#b8862b" stroke-width="2"/>
+  </g>
+  <!-- face lines in thin ink, as in woodblock portraits -->
+  <g fill="none" stroke="#221c18" stroke-width="2" stroke-linecap="round">
+    <path d="M104 104 Q112 100 118 104"/><path d="M138 104 Q144 100 152 104"/>
+    <path d="M104 118 Q111 114 118 117"/><path d="M138 117 Q145 114 152 118"/>
+    <path d="M128 122 Q126 134 130 136"/>
+  </g>
+  <path d="M121 146 Q128 150 135 146 Q128 143 121 146 Z" fill="#b8382a"/>
+  <rect x="2" y="2" width="252" height="252" fill="none" stroke="#221c18" stroke-width="4"/>
 </svg>

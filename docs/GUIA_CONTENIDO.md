@@ -119,6 +119,34 @@ Los archivos `.svg` que hay ahora en `public/img/` son **marcadores de posición
 
 > Los hotspots se colocan con coordenadas en píxeles **del fondo de 1280 × 720**. Si un fondo tiene otro tamaño, las zonas clicables no coincidirán con el dibujo.
 
+### 4.1 Dirección de arte: ukiyo-e
+
+Todo el juego imita una **estampa japonesa en madera** (ukiyo-e). Para que el arte nuevo encaje con la interfaz:
+
+| Rasgo | Cómo aplicarlo |
+|---|---|
+| Color plano | Sin sombreados realistas; cada zona, un color liso. |
+| Contorno de tinta | Línea oscura (*sumi*) de grosor constante alrededor de cada forma. |
+| *Bokashi* | El único degradado permitido: suave, de arriba abajo, típicamente en cielos (azul → papel). |
+| *Kasumi* | Bandas horizontales de bruma color papel/ocre para separar planos. |
+| Papel | Fondos con tono crema y algo de grano, nunca blanco puro. |
+| Retratos | Estilo *bijin-ga*: rostro claro, ojos y cejas de trazo fino, pelo negro plano. |
+
+Paleta oficial (son las mismas variables que usa la interfaz, en [src/css/main.css](../src/css/main.css)):
+
+| Nombre | Color | Uso |
+|---|---|---|
+| *Washi* (papel) | `#efe4cc` / `#e2d2ae` | fondos, papel, cajas de diálogo |
+| *Sumi* (tinta) | `#221c18` | contornos y texto |
+| *Bero-ai* (azul de Prusia) | `#23436c` / `#4f6f99` | cielo, agua, kimonos |
+| *Shu* (bermellón) | `#b8382a` | sol, sellos, acentos, elementos interactivos |
+| *Kincha* (ocre) | `#b8862b` | metal, madera clara, detalles |
+| *Matsuba* (verde pino) | `#4d6b4a` | vegetación |
+
+Tipografías de la interfaz: **Yuji Syuku** (títulos y botones) y **Shippori Mincho** (texto), ambas con licencia OFL en `public/fonts/`. Para cambiar el aspecto de todo el juego basta con modificar los colores del bloque *Palette* de `main.css`.
+
+> El bermellón está reservado para lo **interactivo** (esquinas y sello de los hotspots, decisiones, nombres). Evita usarlo en zonas grandes del fondo para que el jugador no confunda decorado con objetos clicables.
+
 ---
 
 ## 5. Personajes
@@ -179,6 +207,8 @@ ch02_start:
 
 Formato: `talk <personaje> <pose> "texto"`. La pose debe existir en el `.yaml` del personaje.
 
+El cuadro funciona como una **viñeta**: muestra solo la línea actual, centrada y con el nombre de quien habla encima. Cada línea nueva sustituye a la anterior, así que escribe frases que se entiendan solas y evita párrafos largos (caben unas 2–3 líneas). El jugador puede releer lo anterior con el botón **History**.
+
 ### 6.3 Decisiones
 
 ```narrat
@@ -229,7 +259,7 @@ Prefija también las variables con el capítulo (`data.ch02_...`) para no pisar 
 
 ```narrat
   wait 1000                        // pausa de 1 segundo
-  clear_dialog                     // limpia el cuadro de diálogo
+  clear_dialog                     // limpia el cuadro (ya se hace solo en cada línea)
   notify "Has aprendido algo"      // aviso emergente
   set_screen ch02_harbour          // cambia de escena (ver sección 7)
 ```
@@ -275,10 +305,12 @@ buttons:
   ch02_harbour_boat:
     enabled: true
     text: Barca                    # etiqueta que aparece al pasar el ratón
-    cssClass: hotspot              # estilo de zona clicable (borde al pasar el ratón)
+    cssClass: hotspot              # esquinas bermellón + sello que late; al pasar el ratón, borde y nombre
     position: { left: 120, top: 400, width: 300, height: 180 }
     action: ch02_hotspot_boat      # etiqueta .narrat que se ejecuta al hacer clic
 ```
+
+> Con `cssClass: hotspot` el jugador ve siempre **cuatro esquinas bermellón** que enmarcan la zona y un **sello rojo que late** en el centro, así distingue lo clicable del decorado sin ir buscando con el ratón. Ajusta el rectángulo al objeto (sin márgenes de más) para que las esquinas lo enmarquen bien, y evita que el centro caiga sobre un detalle importante del dibujo, porque ahí se pinta el sello.
 
 **Cómo sacar las coordenadas:** abre el fondo (1280 × 720) en cualquier editor de imagen, pon el cursor en la esquina superior izquierda del objeto (`left`, `top`) y mide su ancho y alto (`width`, `height`).
 
@@ -355,6 +387,15 @@ En los scripts:
   if (has_item? ch02_old_map 1):
     "Tienes el mapa."
 ```
+
+**Al obtener un objeto** (`add_item`) aparece automáticamente una tarjeta en el centro de la pantalla con su **icono, nombre y descripción** (y "× N" si son varios). No hace falta escribir nada más en el script. La tarjeta se cierra sola a los 3,5 s o al hacer clic, y si se obtienen varios objetos seguidos se muestran uno detrás de otro.
+
+Por eso conviene que cada objeto tenga:
+
+- un **icono cuadrado** legible a 128 × 128 px (es el tamaño al que se ve en la tarjeta);
+- una **descripción corta**, de una o dos líneas.
+
+> El texto de cabecera ("Item obtained") y la duración se cambian en `src/game/plugins/index.ts`.
 
 ---
 

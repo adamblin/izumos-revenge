@@ -1,6 +1,22 @@
 allowChoosingFont: true
 fontSets:
+  # Ukiyo-e: brush lettering for titles, classic Mincho for reading (latin subsets, OFL)
   default:
+    header:
+      name: Yuji Syuku
+      fontFamily: '"Yuji Syuku", serif'
+      files: ["fonts/Yuji_Syuku/YujiSyuku-Regular-latin.woff2"]
+    body:
+      name: Shippori Mincho
+      fontFamily: '"Shippori Mincho", serif'
+      files:
+        - file: "fonts/Shippori_Mincho/ShipporiMincho-Regular-latin.woff2"
+          options:
+            weight: 400
+        - file: "fonts/Shippori_Mincho/ShipporiMincho-Bold-latin.woff2"
+          options:
+            weight: 700
+  classic:
     header:
       name: Baskervville SC
       fontFamily: '"Baskervville SC", serif'

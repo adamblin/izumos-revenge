@@ -7,10 +7,11 @@ dialogPanel:
   animateText: true
   timeBetweenLines: 100
   overlayMode: true
-  rightOffset: 100
-  bottomOffset: 50
-  width: 475
-  height: 680
+  # Wide panel along the bottom so it never hides hotspots on the sides of the scene
+  rightOffset: 170
+  bottomOffset: 40
+  width: 940
+  height: 220
   allowHistoryToggling: true # This will add a button with the auto/skip button that allows the player to toggle viewing dialog history.
   historyLength: 200 # The number of dialogue lines to keep in the history
   hideDuringTransition: true # Setting this to true will make the dialog panel hide during screen transitions
@@ -25,15 +26,15 @@ layout:
   backgrounds:
     width: 1280
     height: 720
-  dialogBottomPadding: 70
+  dialogBottomPadding: 0 # one line per panel (SingleLineDialogPlugin): no scroll space needed
   mobileDialogHeightPercentage: 60
   verticalLayoutThreshold: 600
   portraits:
-    width: 100
-    height: 100
+    width: 150
+    height: 150
 notifications:
   timeOnScreen: 2.5
-  alsoPrintInDialogue: true
+  alsoPrintInDialogue: false # dialogue shows one line at a time: a notification would replace the current line
 hudStats: {}
 interactionTags:
   default:

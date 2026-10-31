@@ -1,33 +1,390 @@
-/*  See https://docs.narrat.dev/guides/theming-the-game-and-ui for info on how to customise your game with CSS. */
+/*
+ * Ukiyo-e theme.
+ * Narrat theming guide: https://docs.narrat.dev/guides/theming-the-game-and-ui
+ * Change the palette tokens below to re-skin the whole game.
+ */
 
 #narrat {
-  /* Customise CSS variables here. They will override the existing narrat ones. You can also add your own variables */
-  --bg-color: #131720;
-  --text-color: #d9e1f2;
-  --primary: hsl(255, 30%, 55%);
-  --focus: hsl(210, 90%, 50%);
-  --secondary: #42b983;
-  /* You can easily override a CSS style by making it more specific than the original one.
-  Any css added here will applied to elements inside of #narrat and be likely more specific than their original version */
+  /* ---------- Palette (woodblock print inks) ---------- */
+  --washi: #efe4cc; /* paper */
+  --washi-deep: #e2d2ae;
+  --sumi: #221c18; /* ink */
+  --sumi-soft: rgba(34, 28, 24, 0.55);
+  --bero-ai: #23436c; /* Prussian blue */
+  --bero-ai-light: #4f6f99;
+  --shu: #b8382a; /* vermilion */
+  --kincha: #b8862b; /* ochre */
+  --matsuba: #4d6b4a; /* pine green */
+
+  /* Paper fibres, generated so no image file is needed */
+  --washi-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.36 0 0 0 0 0.22 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  --washi-paper:
+    var(--washi-texture),
+    linear-gradient(180deg, var(--washi) 0%, var(--washi-deep) 100%);
+  --ink-frame:
+    0 0 0 2px var(--sumi), 0 0 0 5px var(--washi), 0 0 0 7px var(--sumi);
+
+  /* ---------- Narrat tokens mapped to the palette ---------- */
+  --text-color: var(--sumi);
+  --grey-text-color: var(--sumi-soft);
+  --primary: var(--bero-ai);
+  --secondary: var(--shu);
+  --focus: var(--shu);
+  --border-color: var(--sumi-soft);
+  --bg-color: var(--washi);
+  --game-bg-color: var(--sumi);
+
+  --button-background: var(--washi-paper);
+  --button-text-color: var(--sumi);
+  --tile-background: var(--washi-paper);
+  --tile-border-color: var(--sumi);
+  --modal-background: var(--washi-paper);
+  --notification-bg: var(--washi-paper);
+  --notification-text-color: var(--sumi);
+  --notification-description-color: var(--sumi-soft);
+  --hud-background: var(--washi);
+
+  --dialog-box-bg: transparent;
+  --dialog-choice-color: var(--bero-ai);
+  --dialog-choice-hover-color: var(--shu);
+  --dialog-choice-key-color: var(--shu);
+  --dialog-choice-old-color: var(--sumi-soft);
+  --dialog-choice-seen-before-color: var(--sumi-soft);
+
+  --inventory-text-background: rgba(239, 228, 204, 0.9);
+  --inventory-text-color: var(--sumi);
+  --inventory-amount-background: var(--shu);
+  --inventory-amount-color: var(--washi);
+  --quest-title-color: var(--shu);
+  --completed-quest-title-color: var(--sumi-soft);
+  --selected-quest-background-color: rgba(35, 67, 108, 0.12);
+  --objective-in-progress-color: var(--sumi);
+  --objective-completed-color: var(--sumi-soft);
+
+  --tabs-background: var(--washi-deep);
+  --tab-active-text-color: var(--shu);
+  --tab-inactive-text-color: var(--sumi);
+  --tab-border-color: var(--sumi);
+  --tab-selected-glow-color: var(--shu);
+
+  --tooltip-background: var(--washi);
+  --tooltip-border: 2px solid var(--sumi);
+  --tooltip-border-radius: 0;
+  --tooltip-title-color: var(--shu);
+  --tooltip-color: var(--sumi);
+  --highlighted-tooltip-keyword-color: var(--shu);
+
+  --separator-bg-color: var(--sumi-soft);
+  --save-ui-border-color: var(--sumi-soft);
+  --save-ui-selected-background: var(--kincha);
+  --selected-border: 2px solid var(--shu);
+  --loading-bar-inner-bg: var(--shu);
+  --loading-bar-outer-bg: var(--washi-deep);
+  --shadow-1: rgba(34, 28, 24, 0.25);
+  --shadow-2: rgba(34, 28, 24, 0.35);
 }
 
-/* Add any other CSS you want here */
+/* ---------- Start menu ---------- */
 
-/* Hotspots: clickable areas of a scene (buttons with cssClass: hotspot) */
-#narrat .hotspot {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  border: 2px dashed transparent;
-  border-radius: 8px;
-  color: transparent;
-  cursor: pointer;
+/* narrat paints #game-menu black, so the art goes there */
+#scene-start-menu #game-menu {
+  background: url("/img/backgrounds/title.svg") center / cover no-repeat;
+}
+
+#game-title-text {
+  font-family: var(--font-header);
+  font-size: 5rem;
+  font-variant: normal;
+  color: var(--sumi);
+  text-shadow:
+    0 0 18px var(--washi),
+    0 0 6px var(--washi);
+}
+
+/* ---------- Buttons: paper tiles framed in ink ---------- */
+
+#narrat .nrt-button {
+  font-family: var(--font-header);
+  background: var(--washi-paper);
+  color: var(--sumi);
+  border: 2px solid var(--sumi);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 var(--sumi-soft);
   transition:
-    border-color 0.15s,
-    color 0.15s;
+    background 0.15s,
+    color 0.15s,
+    transform 0.15s;
+}
+
+#narrat .nrt-button:hover,
+#narrat .nrt-button.selected {
+  background: var(--bero-ai);
+  color: var(--washi);
+  transform: translate(-1px, -1px);
+}
+
+#narrat .main-menu-button {
+  font-size: 1.5rem;
+}
+
+#narrat .input-prompt-label {
+  color: var(--washi);
+}
+
+/* ---------- Dialogue: a sheet of washi with a double ink rule ---------- */
+
+#narrat .dialog {
+  background: var(--washi-paper);
+  box-shadow:
+    var(--ink-frame),
+    8px 8px 0 7px rgba(34, 28, 24, 0.35);
+}
+
+/* One line per panel (src/game/dialog/SingleLineDialogPlugin): centre it in the box */
+#narrat .dialog-container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#narrat .dialog-content {
+  text-align: center;
+}
+
+/* The speaker gets its own line, so the " – " separator is not needed */
+#narrat .dialog-separator {
+  display: none;
+}
+
+#narrat .dialog-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* Speaker name as a print cartouche */
+#narrat .dialog-title {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 0.4em;
+  padding: 0 0.6em;
+  font-family: var(--font-header);
+  background: var(--washi);
+  border: 2px solid currentColor;
+  box-shadow: 2px 2px 0 var(--sumi-soft);
+}
+
+#narrat .dialog-choice {
+  font-family: var(--font-header);
+  font-size: 1.2rem;
+}
+
+#narrat .dialog-picture {
+  background: var(--washi);
+  border: 2px solid var(--sumi);
+  border-radius: 0;
+  box-shadow:
+    0 0 0 4px var(--washi),
+    0 0 0 6px var(--sumi);
+}
+
+/* ---------- Notifications, modals and menu tabs ---------- */
+
+#narrat .tab {
+  font-family: var(--font-header);
+  font-weight: normal;
+}
+
+#narrat .notification,
+#narrat .modal-container {
+  border: 2px solid var(--sumi);
+  border-radius: 0;
+  box-shadow: var(--ink-frame);
+}
+
+/* ---------- Hotspots: clickable areas of a scene (buttons with cssClass: hotspot) ---------- */
+
+/*
+ * Idle: vermilion corner brackets with a paper-and-ink halo (readable on light and
+ * dark art) plus a breathing vermilion seal in the centre, so players can tell
+ * what is interactive without hunting with the mouse.
+ * Hover: a warm tint, dashed outline and the name on a seal-red band.
+ */
+#narrat .hotspot {
+  --hs-mark: var(--shu);
+  --hs-len: 26px;
+  --hs-w: 4px;
+  --hs-seal: radial-gradient(
+      circle,
+      var(--shu) 0 7px,
+      var(--washi) 7px 9px,
+      var(--sumi) 9px 10.5px,
+      transparent 11px
+    )
+    center / 24px 24px no-repeat;
+  --hs-corners:
+    linear-gradient(var(--hs-mark), var(--hs-mark)) left top / var(--hs-len)
+      var(--hs-w) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) left top / var(--hs-w)
+      var(--hs-len) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) right top / var(--hs-len)
+      var(--hs-w) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) right top / var(--hs-w)
+      var(--hs-len) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) left bottom / var(--hs-len)
+      var(--hs-w) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) left bottom / var(--hs-w)
+      var(--hs-len) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) right bottom / var(--hs-len)
+      var(--hs-w) no-repeat,
+    linear-gradient(var(--hs-mark), var(--hs-mark)) right bottom / var(--hs-w)
+      var(--hs-len) no-repeat;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* hotspots are buttons: replace the paper tile look so the background art shows */
+  background: var(--hs-seal), var(--hs-corners);
+  box-shadow: none;
+  border: 3px dashed transparent;
+  color: transparent;
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  line-height: 1.8em;
+  cursor: pointer;
+  filter: drop-shadow(0 0 1.5px var(--washi)) drop-shadow(0 0 1px var(--sumi))
+    drop-shadow(0 0 4px var(--shu));
+  animation: hotspot-breathe 2.4s ease-in-out infinite;
+  transition: border-color 0.15s;
 }
 
 #narrat .hotspot:hover {
-  border-color: var(--primary);
-  color: var(--text-color);
+  border-color: var(--shu);
+  color: var(--washi);
+  background:
+    linear-gradient(var(--shu), var(--shu)) top center / 100% 1.8em no-repeat,
+    var(--hs-corners);
+  filter: drop-shadow(0 0 1.5px var(--washi)) drop-shadow(0 0 1px var(--sumi))
+    drop-shadow(0 0 10px var(--shu));
+  animation: none;
+}
+
+@keyframes hotspot-breathe {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1.5px var(--washi)) drop-shadow(0 0 1px var(--sumi))
+      drop-shadow(0 0 2px var(--shu));
+  }
+  50% {
+    filter: drop-shadow(0 0 1.5px var(--washi)) drop-shadow(0 0 1px var(--sumi))
+      drop-shadow(0 0 9px var(--shu));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #narrat .hotspot {
+    animation: none;
+  }
+}
+
+/* ---------- Item reveal: card shown on add_item (src/game/item-reveal) ---------- */
+
+#narrat .item-reveal {
+  position: fixed;
+  top: 14%;
+  left: 50%;
+  z-index: 1000; /* above narrat's game layers and dialogue */
+  width: 340px;
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  color: var(--sumi);
+  background: var(--washi-paper);
+  box-shadow:
+    var(--ink-frame),
+    8px 8px 0 7px rgba(34, 28, 24, 0.35);
+  cursor: pointer;
+  pointer-events: auto;
+  transform: translateX(-50%);
+  animation: item-reveal-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.25) both;
+}
+
+#narrat .item-reveal--leaving {
+  animation: item-reveal-out 0.25s ease-in both;
+}
+
+#narrat .item-reveal__label {
+  padding: 0 0.8em;
+  font-family: var(--font-header);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: var(--washi);
+  background: var(--shu);
+  border: 2px solid var(--sumi);
+}
+
+/* The icon sits in a framed square with a seal-red glow behind it */
+#narrat .item-reveal__frame {
+  width: 128px;
+  height: 128px;
+  padding: 10px;
+  background:
+    radial-gradient(circle, rgba(184, 56, 42, 0.25) 0 40%, transparent 70%),
+    var(--washi);
+  border: 2px solid var(--sumi);
+  box-shadow:
+    0 0 0 4px var(--washi),
+    0 0 0 6px var(--sumi);
+}
+
+#narrat .item-reveal__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#narrat .item-reveal__name {
+  font-family: var(--font-header);
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+#narrat .item-reveal__amount {
+  margin-left: 0.4em;
+  color: var(--shu);
+}
+
+#narrat .item-reveal__description {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #4a3f36;
+}
+
+@keyframes item-reveal-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-24px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes item-reveal-out {
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px) scale(0.96);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #narrat .item-reveal,
+  #narrat .item-reveal--leaving {
+    animation-duration: 0.01s;
+  }
 }

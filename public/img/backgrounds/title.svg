@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <!-- PLACEHOLDER title art in ukiyo-e style. Replace with the final illustration (1280x720). -->
+  <defs>
+    <!-- bokashi: the hand-wiped gradient at the top of woodblock prints -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#23436c"/>
+      <stop offset="0.38" stop-color="#7f93a8"/>
+      <stop offset="0.62" stop-color="#efe4cc"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f6f99"/>
+      <stop offset="1" stop-color="#1c3557"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2d4a6e"/>
+      <stop offset="1" stop-color="#8aa0b8"/>
+    </linearGradient>
+    <!-- seigaiha: overlapping wave arcs -->
+    <pattern id="seigaiha" width="60" height="30" patternUnits="userSpaceOnUse">
+      <rect width="60" height="30" fill="url(#sea)"/>
+      <g fill="none" stroke="#efe4cc" stroke-width="2.2" opacity="0.85">
+        <path d="M0 30a30 30 0 0 1 60 0M10 30a20 20 0 0 1 40 0M20 30a10 10 0 0 1 20 0"/>
+        <path d="M-30 15a30 30 0 0 1 60 0M-20 15a20 20 0 0 1 40 0M-10 15a10 10 0 0 1 20 0"/>
+        <path d="M30 15a30 30 0 0 1 60 0M40 15a20 20 0 0 1 40 0M50 15a10 10 0 0 1 20 0"/>
+      </g>
+    </pattern>
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix values="0 0 0 0 0.4 0 0 0 0 0.32 0 0 0 0 0.2 0 0 0 0.12 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+
+  <rect width="1280" height="720" fill="url(#sky)"/>
+
+  <!-- rising sun -->
+  <circle cx="1030" cy="190" r="78" fill="#b8382a"/>
+
+  <!-- distant mountain with snow cap -->
+  <path d="M120 500 L470 190 Q500 170 530 190 L900 500 Z" fill="url(#mountain)" stroke="#221c18" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M400 252 L470 190 Q500 170 530 190 L612 262 L585 255 L566 282 L540 258 L515 290 L492 262 L466 286 L446 260 L424 276 Z" fill="#f7f0e0" stroke="#221c18" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- kasumi: bands of mist -->
+  <g fill="#e9d6aa" stroke="#221c18" stroke-width="2">
+    <path d="M-20 300 H330 Q352 300 352 318 Q352 336 330 336 H-20 Z"/>
+    <path d="M700 380 H1300 V420 H700 Q676 420 676 400 Q676 380 700 380 Z"/>
+    <path d="M60 455 H560 Q584 455 584 474 Q584 493 560 493 H60 Q36 493 36 474 Q36 455 60 455 Z"/>
+  </g>
+
+  <!-- sea -->
+  <rect y="500" width="1280" height="220" fill="url(#seigaiha)"/>
+  <line x1="0" y1="500" x2="1280" y2="500" stroke="#221c18" stroke-width="3"/>
+
+  <!-- curling wave crest on the left (original stylisation) -->
+  <path d="M0 720 V560 C60 520 130 470 210 470 C280 470 320 510 300 550 C285 580 245 580 240 555 C236 535 262 528 270 540 C262 505 205 500 170 530 C120 575 110 650 160 720 Z" fill="#23436c" stroke="#221c18" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#f7f0e0" stroke="#221c18" stroke-width="1.5">
+    <circle cx="214" cy="476" r="9"/><circle cx="236" cy="480" r="7"/><circle cx="256" cy="488" r="7"/>
+    <circle cx="276" cy="500" r="6"/><circle cx="292" cy="515" r="6"/><circle cx="194" cy="478" r="7"/>
+    <circle cx="174" cy="484" r="6"/>
+  </g>
+  <path d="M30 600 C70 560 110 545 150 548" fill="none" stroke="#efe4cc" stroke-width="3"/>
+  <path d="M20 650 C55 615 90 600 125 600" fill="none" stroke="#efe4cc" stroke-width="3"/>
+
+  <!-- pine leaning over the sea -->
+  <path d="M1280 700 C1180 650 1150 560 1170 470 C1180 420 1150 380 1100 350" fill="none" stroke="#221c18" stroke-width="22" stroke-linecap="round"/>
+  <path d="M1280 700 C1180 650 1150 560 1170 470 C1180 420 1150 380 1100 350" fill="none" stroke="#6b4530" stroke-width="15" stroke-linecap="round"/>
+  <g fill="#4d6b4a" stroke="#221c18" stroke-width="2.5">
+    <ellipse cx="1090" cy="340" rx="90" ry="26"/>
+    <ellipse cx="1210" cy="430" rx="80" ry="22"/>
+    <ellipse cx="1130" cy="520" rx="70" ry="20"/>
+    <ellipse cx="1240" cy="580" rx="60" ry="18"/>
+  </g>
+
+  <!-- vertical cartouche, as on the side of a print: "Izumo no Fukushu" -->
+  <g transform="translate(60 40)">
+    <rect width="54" height="230" fill="#efe4cc" stroke="#221c18" stroke-width="3"/>
+    <rect x="5" y="5" width="44" height="220" fill="none" stroke="#221c18" stroke-width="1"/>
+    <text x="27" y="22" writing-mode="vertical-rl" font-family="Yu Mincho, MS Mincho, Hiragino Mincho ProN, Noto Serif JP, serif" font-size="32" fill="#221c18" letter-spacing="4">出雲の復讐</text>
+  </g>
+  <!-- artist seal -->
+  <rect x="68" y="282" width="38" height="38" fill="#b8382a"/>
+  <text x="87" y="309" text-anchor="middle" font-family="Yu Mincho, MS Mincho, Hiragino Mincho ProN, Noto Serif JP, serif" font-size="24" fill="#efe4cc">印</text>
+
+  <!-- paper grain + ink border -->
+  <rect width="1280" height="720" filter="url(#paper)" fill="#fff"/>
+  <rect x="8" y="8" width="1264" height="704" fill="none" stroke="#221c18" stroke-width="4"/>
+</svg>
