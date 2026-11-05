@@ -388,3 +388,199 @@
     animation-duration: 0.01s;
   }
 }
+
+/* ---------- Konpira Fune Fune: minigame overlay (src/game/konpira) ---------- */
+
+#narrat .konpira {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--sumi);
+  background: var(--washi-paper);
+  user-select: none;
+}
+
+#narrat .konpira__panel {
+  position: absolute;
+  z-index: 3;
+  width: 640px;
+  max-width: calc(100% - 32px);
+  padding: 1.6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+  background: var(--washi-paper);
+  box-shadow:
+    var(--ink-frame),
+    8px 8px 0 7px rgba(34, 28, 24, 0.35);
+}
+
+#narrat .konpira__title {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  color: var(--shu);
+}
+
+#narrat .konpira__line {
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+#narrat .konpira__action {
+  margin-top: 0.6rem;
+  padding: 0.3rem 2.4rem;
+  font-size: 1.4rem;
+}
+
+#narrat .konpira__lyric {
+  min-height: 2.4rem;
+  font-family: var(--font-header);
+  font-size: 1.8rem;
+  color: var(--bero-ai);
+}
+
+/* Hands, tray and cup are stacked around the centre of the board */
+#narrat .konpira__board {
+  position: relative;
+  width: 420px;
+  height: 480px;
+}
+
+#narrat .konpira__tray,
+#narrat .konpira__cup,
+#narrat .konpira__seat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+#narrat .konpira__tray {
+  width: 190px;
+  height: 190px;
+  margin: -95px 0 0 -95px;
+}
+
+#narrat .konpira__cup {
+  z-index: 1;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  transition: transform 0.12s ease-out;
+}
+
+/* The holder keeps the cup beside their hand */
+#narrat .konpira__board[data-cup="player"] .konpira__cup {
+  transform: translate(150px, 175px);
+}
+
+#narrat .konpira__board[data-cup="opponent"] .konpira__cup {
+  transform: translate(-150px, -175px);
+}
+
+#narrat .konpira__seat {
+  z-index: 2;
+  width: 110px;
+  height: 110px;
+  margin: -55px 0 0 -55px;
+}
+
+#narrat .konpira__seat--player {
+  --konpira-strike: -70px;
+  --konpira-sleeve: var(--bero-ai);
+  top: calc(50% + 175px);
+}
+
+/* Same art as the player, turned to face them from the other side of the table */
+#narrat .konpira__seat--opponent {
+  --konpira-strike: 70px;
+  --konpira-sleeve: var(--shu);
+  top: calc(50% - 175px);
+}
+
+#narrat .konpira__seat--opponent .konpira__hand {
+  transform: rotate(180deg);
+}
+
+#narrat .konpira__hand {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+
+#narrat .konpira__seat::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  height: 24px;
+  background: var(--konpira-sleeve);
+  border: 3px solid var(--sumi);
+}
+
+#narrat .konpira__seat--player::after {
+  top: 96px;
+}
+
+#narrat .konpira__seat--opponent::after {
+  bottom: 96px;
+}
+
+#narrat .konpira__status {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  color: var(--sumi-soft);
+}
+
+#narrat .konpira[data-turn="player"] .konpira__status {
+  color: var(--shu);
+}
+
+#narrat .konpira__timer {
+  width: 420px;
+  height: 10px;
+  background: var(--washi-deep);
+  border: 2px solid var(--sumi);
+}
+
+#narrat .konpira__timer-fill {
+  height: 100%;
+  background: var(--shu);
+  transform-origin: left;
+}
+
+#narrat .konpira[data-turn="opponent"] .konpira__timer-fill {
+  visibility: hidden;
+}
+
+#narrat .konpira__hands {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+#narrat .konpira__hand-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 1rem;
+  font-size: 1.3rem;
+}
+
+#narrat .konpira__hand-icon {
+  width: 40px;
+  height: 40px;
+}
+
+#narrat .konpira__key {
+  padding: 0 0.45em;
+  font-size: 0.9rem;
+  border: 1.5px solid currentColor;
+}

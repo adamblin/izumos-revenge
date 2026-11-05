@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
   <!-- PLACEHOLDER room in ukiyo-e style. Replace with the final background (1280x720).
-       Hotspots (buttons.yaml): desk = 180,420 320x160 · door = 860,160 220x420 -->
+       Hotspots (buttons.yaml): desk = 180,420 320x160 · door = 860,160 220x420 · stand = 530,405 140x125 -->
   <defs>
     <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#23436c"/>
@@ -54,6 +54,13 @@
   <circle cx="745" cy="453" r="8" fill="#b8382a" stroke="#221c18" stroke-width="1.5"/>
   <circle cx="715" cy="428" r="6" fill="#b8382a" stroke="#221c18" stroke-width="1.5"/>
   <path d="M680 520 h40 l-6 -30 h-28 z" fill="#23436c" stroke="#221c18" stroke-width="2"/>
+
+  <!-- lacquered stand with a sake cup (hotspot: stand) -->
+  <g stroke="#221c18" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M556 496 H644 L636 506 H564 Z" fill="#3a2a20"/>
+    <rect x="572" y="506" width="56" height="14" fill="#221c18"/>
+    <path d="M580 480 H620 Q616 496 600 496 Q584 496 580 480 Z" fill="#b8382a"/>
+  </g>
 
   <!-- tatami floor with dark borders (heri) -->
   <rect y="560" width="1280" height="160" fill="url(#tatami)"/>

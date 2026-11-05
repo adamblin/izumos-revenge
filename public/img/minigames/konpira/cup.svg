@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <!-- PLACEHOLDER lacquered sake cup seen from above. -->
+  <circle cx="48" cy="48" r="42" fill="#b8382a" stroke="#221c18" stroke-width="4"/>
+  <circle cx="48" cy="48" r="31" fill="none" stroke="#b8862b" stroke-width="3"/>
+  <path d="M48 28 L66 58 H30 Z" fill="#efe4cc" stroke="#221c18" stroke-width="2"/>
+</svg>

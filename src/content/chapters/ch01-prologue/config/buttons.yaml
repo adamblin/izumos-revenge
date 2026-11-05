@@ -13,3 +13,9 @@ buttons:
     cssClass: hotspot
     position: { left: 860, top: 160, width: 220, height: 420 }
     action: ch01_hotspot_door
+  ch01_room_stand:
+    enabled: true
+    text: Stand
+    cssClass: hotspot
+    position: { left: 530, top: 405, width: 140, height: 125 }
+    action: ch01_hotspot_stand

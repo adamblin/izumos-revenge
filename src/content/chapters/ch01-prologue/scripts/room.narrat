@@ -27,6 +27,24 @@ ch01_hotspot_door:
   else:
     talk izumo idle "Locked. There must be a key somewhere."
 
+ch01_hotspot_stand:
+  if $data.ch01_konpira_won:
+    talk izumo idle "The hand is gone. Only the cup remains."
+  else:
+    choice:
+      talk izumo idle "A sake cup on a lacquered stand. And a pale hand, reaching out of the scroll. Does it want to play?"
+      "Play Konpira Fune Fune":
+        run ch01_play_konpira
+      "Leave it":
+        talk izumo idle "Not now."
+
+ch01_play_konpira:
+  if (konpira_fune easy):
+    set data.ch01_konpira_won true
+    talk izumo idle "The hand falters, and fades into the paper."
+  else:
+    talk izumo idle "Too slow. The hand is still waiting."
+
 ch01_end:
   talk izumo idle "It opens!"
   complete_quest ch01_escape

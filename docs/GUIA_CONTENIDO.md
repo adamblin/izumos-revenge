@@ -277,6 +277,25 @@ tooltips:
 
 Y úsala en un diálogo así: `"Dicen que aquí vive un @t{kami}@."`
 
+### 6.8 Minijuego: Konpira Fune Fune
+
+Juego tradicional de los banquetes con geishas. Dos jugadores se turnan al ritmo de la canción, cada vez más rápido, y pierde quien se equivoca de mano o pierde el compás. Se lanza desde cualquier script y devuelve si el jugador ha ganado:
+
+```narrat
+ch02_play_konpira:
+  if (konpira_fune normal):
+    set data.ch02_konpira_won true
+    talk izumo idle "He ganado."
+  else:
+    talk izumo idle "Otra vez será."
+```
+
+- **Dificultad:** `easy`, `normal` (si no se indica ninguna) o `hard`. Una partida bien jugada dura unos 20–30 s en cualquiera de ellas.
+- **Reintentos:** el juego no los gestiona. Decide en el script si el jugador puede volver a intentarlo. En `ch01-prologue/scripts/room.narrat` hay un ejemplo.
+- **Textos:** reglas, botones y letra de la canción están en `src/game/konpira/konpiraTexts.ts`.
+- **Arte:** `public/img/minigames/konpira/` (`palm.svg`, `fist.svg`, `cup.svg`, `tray.svg`). Las manos deben tener la muñeca abajo y centrada, porque la manga se dibuja ahí. El rival usa las mismas imágenes giradas.
+- **Ritmo:** velocidad y errores del rival de cada dificultad se ajustan en `src/game/konpira/KonpiraDifficulty.ts`.
+
 ---
 
 ## 7. Escenas y hotspots (point & click)
@@ -522,11 +541,20 @@ src/
 ├── game/               Mecánicas propias del juego (extensiones del motor)
 │   ├── plugins/index.ts             único registro de plugins
 │   ├── plugins/SteamPlugin.ts
-│   └── visits/                      mecánica "primera visita" (ejemplo de referencia)
-│       ├── VisitTracker.ts          dominio puro, sin dependencias de Narrat
-│       ├── visitCommands.ts         comandos .narrat (dependen de la interfaz VisitRegistry)
-│       ├── visitsStore.ts           persistencia en partidas guardadas
-│       └── VisitsPlugin.ts          adaptador que lo registra en Narrat
+│   ├── visits/                      mecánica "primera visita" (ejemplo de referencia)
+│   │   ├── VisitTracker.ts          dominio puro, sin dependencias de Narrat
+│   │   ├── visitCommands.ts         comandos .narrat (dependen de la interfaz VisitRegistry)
+│   │   ├── visitsStore.ts           persistencia en partidas guardadas
+│   │   └── VisitsPlugin.ts          adaptador que lo registra en Narrat
+│   ├── dialog/                      cuadro de diálogo de una sola línea
+│   ├── item-reveal/                 tarjeta al obtener un objeto
+│   └── konpira/                     minijuego Konpira Fune Fune
+│       ├── KonpiraMatch.ts          reglas puras, sin tiempo ni pantalla
+│       ├── KonpiraOpponent.ts       rival; KonpiraDifficulty.ts, sus parámetros
+│       ├── KonpiraGame.ts           bucle de ritmo (depende de las interfaces de KonpiraView.ts)
+│       ├── DomKonpiraView.ts        pantalla; WebAudioKonpiraSound.ts, sonido
+│       ├── konpiraCommands.ts       comando konpira_fune
+│       └── KonpiraPlugin.ts         adaptador que lo registra en Narrat
 └── content/            Datos: lo que edita el equipo narrativo
 ```
 

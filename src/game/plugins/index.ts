@@ -4,6 +4,7 @@ import { SingleLineDialogPlugin } from "../dialog/SingleLineDialogPlugin";
 import { DomItemRevealView } from "../item-reveal/DomItemRevealView";
 import { ItemRevealPlugin } from "../item-reveal/ItemRevealPlugin";
 import { ItemRevealQueue } from "../item-reveal/ItemRevealQueue";
+import { KonpiraPlugin } from "../konpira/KonpiraPlugin";
 import { VisitTracker } from "../visits/VisitTracker";
 import { VisitsPlugin } from "../visits/VisitsPlugin";
 import { SteamPlugin } from "./SteamPlugin";
@@ -13,6 +14,7 @@ export function createPlugins(): NarratPluginObject<unknown>[] {
   const plugins: NarratPluginObject<unknown>[] = [
     new VisitsPlugin(new VisitTracker()),
     new SingleLineDialogPlugin(),
+    new KonpiraPlugin(),
     new ItemRevealPlugin(
       new ItemRevealQueue(
         new DomItemRevealView({ label: "Item obtained", durationMs: 3500 }),

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
+  <!-- PLACEHOLDER black lacquer tray seen from above. -->
+  <rect x="8" y="8" width="224" height="224" rx="26" fill="#221c18"/>
+  <rect x="24" y="24" width="192" height="192" rx="16" fill="#3a2a20" stroke="#b8862b" stroke-width="4"/>
+  <g fill="none" stroke="#b8862b" stroke-width="2" opacity="0.7">
+    <path d="M44 196 C70 176 72 196 96 180 M196 44 C170 64 168 44 144 60"/>
+  </g>
+</svg>

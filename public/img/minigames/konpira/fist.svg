@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- PLACEHOLDER closed fist seen from above. Keep the wrist at the bottom centre. -->
+  <rect x="40" y="80" width="54" height="48" fill="#f7eee0"/>
+  <path d="M40 80 V128 M94 80 V128" fill="none" stroke="#221c18" stroke-width="3"/>
+  <g fill="#f7eee0" stroke="#221c18" stroke-width="3" stroke-linejoin="round">
+    <rect x="30" y="26" width="74" height="66" rx="20"/>
+    <path d="M30 70 C22 62 26 50 38 52 L74 60 C84 62 84 76 72 76 L44 78 C38 80 34 76 30 70 Z"/>
+  </g>
+  <path d="M50 27 V50 M67 26 V54 M85 27 V56" fill="none" stroke="#221c18" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

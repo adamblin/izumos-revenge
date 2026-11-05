@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- PLACEHOLDER open hand, fingers up, seen from above. Keep the wrist at the bottom centre. -->
+  <g fill="#f7eee0" stroke="#221c18" stroke-width="3" stroke-linejoin="round">
+    <path d="M36 74 C28 64 20 54 14 50 C8 46 2 54 8 60 C16 70 22 88 34 100 Z"/>
+    <rect x="38" y="22" width="14" height="56" rx="7"/>
+    <rect x="53" y="10" width="14" height="68" rx="7"/>
+    <rect x="68" y="14" width="14" height="64" rx="7"/>
+    <rect x="83" y="28" width="13" height="50" rx="6.5"/>
+  </g>
+  <rect x="38" y="62" width="58" height="66" fill="#f7eee0"/>
+  <path d="M37 72 V128 M97 70 V128" fill="none" stroke="#221c18" stroke-width="3"/>
+  <path d="M50 92 Q66 100 84 88" fill="none" stroke="#221c18" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

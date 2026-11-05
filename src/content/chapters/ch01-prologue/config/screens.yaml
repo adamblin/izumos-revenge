@@ -5,3 +5,4 @@ screens:
     buttons:
       - ch01_room_desk
       - ch01_room_door
+      - ch01_room_stand
